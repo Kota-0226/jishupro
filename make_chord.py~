@@ -1,0 +1,56 @@
+import music21 as m21
+import numpy as np
+
+
+#c1 = m21.chord.Chord(['c', 'e-', 'g'])
+#print(c1.commonName)
+
+"""
+a0 = maj
+a1 = min
+a2 = dim
+a3 = aug
+a4 = maj7
+a5 = min7
+a6 = 7
+a7 = dim7
+a8 = hdim7
+a9 = minmaj7
+a10 = maj6
+a11 = min6
+a12 = 9
+a13 = maj9
+a14 = min9
+a15 = sus2
+a16 = sus4
+"""
+a0 = np.array([1,0,0,0,1,0,0,1,0,0,0,0])
+a1 = np.array([1,0,0,1,0,0,0,1,0,0,0,0])
+a2 = np.array([1,0,0,1,0,0,1,0,0,0,0,0])
+a3 = np.array([1,0,0,0,1,0,0,0,1,0,0,0])
+a4 = np.array([1,0,0,0,1,0,0,1,0,0,0,1])
+a5 = np.array([1,0,0,1,0,0,0,1,0,0,1,0])
+a6 = np.array([1,0,0,0,1,0,0,1,0,0,1,0])
+a7 = np.array([1,0,0,1,0,0,1,0,0,1,0,0])
+a8 = np.array([1,0,0,1,0,0,1,0,0,0,1,0])
+a9 = np.array([1,0,0,1,0,0,0,1,0,0,0,1])
+a10 = np.array([1,0,0,0,1,0,0,1,0,1,0,0])
+a11 = np.array([1,0,0,1,0,0,0,1,0,1,0,0])
+a12 = np.array([1,0,1,0,1,0,0,1,0,0,1,0])
+a13 = np.array([1,0,1,0,1,0,0,1,0,0,0,1])
+a14 = np.array([1,0,1,1,0,0,0,1,0,0,1,0])
+a15 = np.array([1,0,1,0,0,0,0,1,0,0,0,0])
+a16 = np.array([1,0,0,0,0,1,0,1,0,0,0,0])
+
+
+
+print("Just enter 8 chords and it will automatically generate a melody in 4/4 time for 4 measures.")
+print("Enter eight chord progressions that form the base of the melody, separated by one-byte spaces. Each chord is equivalent to two beats.")
+print("In addition, the following chords can be used.")
+print("maj,min,dim,aug,maj7,min7,7,dim7,hdim7,minmaj7,maj6,min6,9,maj9,min9,sus2,sus4")
+print("Example: C C Em Em Am Am Dm Dm")
+
+print(" ")
+print("Please input chords progression.")
+chord_progression = input().split()
+print(chord_progression)

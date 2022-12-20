@@ -1,0 +1,47 @@
+import music21 as m21
+import markovify as mrkv
+import os
+import glob
+
+#参考:https://inglow.jp/techblog/python-scoremake/
+
+
+#パスの生成
+DS = os.sep #これは"/"を意味する
+bs = os.path.dirname(__file__) + DS #このファイルのありか
+xmlpath = bs + 'musicxml_simple' + DS
+
+#読み込ませるテキスト準備用                                                                         
+note_txts = []
+
+#フォルダ内のxmlファイルを取得
+xmls = glob.glob(xmlpath + "*.mxl")
+#音価の合計を出そうね
+count = 0
+for x in xmls:
+    piece = m21.converter.parse(x)
+    ntxt = []
+    for n in piece.flat.notesAndRests:
+        #n.name:音名の取得 n.duration.quaterLength:音の長さの取得(1拍,0.5拍など...)
+        #ここは楽譜が単音だけ出ないとエラーを吐く
+        ntxt.append(str(n.name) + '_' + str(n.duration.quarterLength))
+        #count += float(n.duration.quarterLength)
+        #print("n={}".format(n.duration.quarterLength))
+    #1曲が終わったら追加する
+    note_txts.append(' '.join(ntxt))
+
+#print("piece={}".format(piece))
+#最後に、改行区切りでテキストデーを準備
+txts = '\n'.join(note_txts)
+#print("xmls={}".format(xmls))
+#print("txts={
+    
+    if count ==32:
+        break
+    #小節線を追加する
+    meas.makeMeasures(inPlace=True)
+
+    
+#楽譜をmusicxmlで表示する
+meas.show('musicxml',addEndTimds=True)
+
