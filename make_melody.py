@@ -2,6 +2,7 @@ import music21 as m21
 import markovify as mrkv
 import os
 import glob
+import make_chords as mc
 
 #参考:https://inglow.jp/techblog/python-scoremake/
 
@@ -43,8 +44,8 @@ def make_melody(a): #aにはとってくるサンプルデータが入ってく�
         sentence = text_model.make_sentence(tries=100)
         #print("sentence = {}".format(sentence.split()))
         #メロディをmusicXMLに変換する
-        meas = m21.stream.Stream() #楽譜オブジェクトの生成
-        meas.append(m21.meter.TimeSignature('4/4')) #拍子を4/4で固定
+        meas1 = m21.stream.Part() #楽譜オブジェクトの生成
+        meas1.append(m21.meter.TimeSignature('4/4')) #拍子を4/4で固定
         print("sentence={}".format(sentence))
         melo = sentence.split() #半角スペース区切りで配列にする
 
@@ -56,7 +57,7 @@ def make_melody(a): #aにはとってくるサンプルデータが入ってく�
                 n = m21.note.Note(ptch,quarterLength = float(dist))
             count += float(dist)
             #楽譜に追加
-            meas.append(n)
+            meas1.append(n)
 
             #len_of_text = get_length(sentence)
             #print("len_of_text={}".format(len_of_text))
@@ -64,14 +65,12 @@ def make_melody(a): #aにはとってくるサンプルデータが入ってく�
         print("times={}".format(times))
         if count == 16:
                break
-    
-    #if count ==32:
-        #break
+
     #小節線を追加する
-    meas.makeMeasures(inPlace=True)
+    #meas1.makeMeasures(inPlace=True)
+    #ここまででメロディーパート追加完了
 
-    
     #楽譜をmusicxmlで表示する
-    meas.show('musicxml',addEndTimds=True)
+    #meas1.show('musicxml',addEndTimds=True)
 
-    return meas
+    return meas1

@@ -1,13 +1,11 @@
 import music21 as m21
 import numpy as np
 
-import make_chord as mc
-import make_chord_tranposition as mct
-import pickup_chordtype as pc
+import make_chords as mc
 
 def chordmatrix(string):
-    transpose = mct.chord_transpose(string) #コード進行のベース音が入る                                                                                         
-    chord_type = pc.pickup_chordtype(string) #コード進行の種類が入る
+    transpose = mc.chord_transpose(string) #コード進行のベース音が入る                                                                                         
+    chord_type = mc.pickup_chordtype(string) #コード進行の種類が入る
     return np.roll(mc.a[chord_type],transpose) #1*12のnp配列が入る
 
 def chordProgression_matrix(chord_progression): #chord_progressionにはコード進行の文字列が[1,8]のリストとして入ってくることを想定している

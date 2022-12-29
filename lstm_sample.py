@@ -29,7 +29,7 @@ xmlpath = bs + 'musicxml_simple8' + DS
 model_weights_path = bs + 'melo_model' + 'w.hdf5'
 model_save_path = bs + 'melo_model'+'.hdf5'
 
-make_model = False
+make_model = False #後でもうすでに生成データがあるかの話
 
 #music_keys = ('C', 'D', 'E', 'F', 'F#', 'G', 'A', 'B') 
 music_keys = ('C')
